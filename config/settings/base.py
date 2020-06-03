@@ -42,7 +42,7 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    "default": env.db("DATABASE_URL", default="postgres://edcar_distribuidora:edcar_distribuidora@localhosts:5432/edcar_distribuidora")
+    "default": env.db("DATABASE_URL", default="postgres://edcar_distribuidora:edcar_distribuidora@localhost:5432/edcar_distribuidora")
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
