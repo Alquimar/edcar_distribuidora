@@ -1,0 +1,41 @@
+.ftco-tab-nav {
+  padding: 0;
+  margin: 0;
+  display: inline-block !important;
+}
+
+@media screen and (max-width: 576px) {
+  .ftco-tab-nav {
+    display: block !important;
+    margin-bottom: 10px;
+    width: 100% !important;
+  }
+}
+
+.ftco-tab-nav li {
+  padding: 0;
+  margin: 0 5px;
+  display: inline-block !important;
+}
+
+@media screen and (max-width: 576px) {
+  .ftco-tab-nav li {
+    display: block !important;
+    margin-bottom: 10px;
+    width: 100% !important;
+  }
+}
+
+.ftco-tab-nav li a {
+  font-size: 14pt;
+  color: #7d8285;
+  border-bottom: 1pt solid #7d8285;
+  border-radius: 0 !important;
+}
+
+.ftco-tab-nav li a.active {
+  background: none !important;
+  color: #decd18 !important;
+  border: 1pt solid #decd18;
+}
+

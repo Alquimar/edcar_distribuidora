@@ -1,0 +1,11 @@
+.page-link.link-paginacao {
+  color: #decd18;
+  border: 0;
+}
+
+.separador {
+  color: #decd18;
+  font-size: 14pt;
+  border-bottom: dashed 1px;
+  border-color: #decd18;
+}
