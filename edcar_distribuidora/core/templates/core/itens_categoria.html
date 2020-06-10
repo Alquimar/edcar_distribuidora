@@ -1,68 +1,34 @@
-<!DOCTYPE html>
 {% extends "base.html" %}
 {% load static %}
-<html>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Renkon</title>
-  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-  <link rel="stylesheet" href="{% static 'fonts/ionicons.min.css' %}">
-  <link rel="stylesheet" href="{% static 'css/Footer-Dark.css' %}">
-  <link rel="stylesheet" href="{% static 'css/Login-Form-Dark.css' %}">
-  <link rel="stylesheet" href="{% static 'css/Navigation-Clean.css' %}">
-  <link rel="stylesheet" href="{% static 'css/Projects-Horizontal.css' %}">
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-
-<body>
 {% block content %}
-  <div class="projects-horizontal">
-    <div class="container">
-      <div class="intro">
-        <h2 class="text-center">Menu</h2>
-      </div>
-      <div class="col-md-12 text-center">
-        <ul class="nav ftco-tab-nav nav-pills mb-5" id="pills-tab" role="tablist">
-          <li class="nav-item ftco-animate fadeInUp ftco-animated">
-            <a class="nav-link" role="tab" aria-selected="true" aria-controls="pills-breakfast" href="{% url 'core:home' %}#div_itens">Todos</a>
-          </li>
-          {% for categoria in categorias %}
-            <li class="nav-item ftco-animate fadeInUp ftco-animated">
-              {% if categoria_id == categoria.id %}
-                <a class="nav-link active" id="{{ categoria.id }}" role="tab" aria-selected="true" aria-controls="pills-breakfast" href="{% url 'core:itens_categoria' categoria.pk %}">{{ categoria }}</a>
-              {% else %}
-                <a class="nav-link" id="{{ categoria.id }}" role="tab" aria-selected="true" aria-controls="pills-breakfast" href="{% url 'core:itens_categoria' categoria.pk %}#div_itens">{{ categoria }}</a>
-              {% endif %}
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="row projects" id="div_itens">
-        {% for item in itens %}
-          <div class="col-sm-6 item">
-            <div class="row">
-              <div class="col-md-12 col-lg-5">
-                {% if item.imagem %}
-                  <a href="#"><img class="img-fluid d-flex d-xl-flex justify-content-center"
-                                   src="{{ item.imagem.url }}"></a>
-                {% endif %}
-              </div>
-              <div class="col">
-                <h3 class="name">{{ item.nome }}</h3>
-                <p class="description">{{ item.descricao }}</p>
-                {% if item.mostrar_valor %}
-                  <span class="d-flex d-xl-flex justify-content-end justify-content-xl-end span-preco">R$ {{ item.valor }}</span>
-                {% endif %}
-              </div>
+<div class="text-center">
+    <h3>{{ categoria.nome }}</h3>
+</div>
+{% if produtos.count > 0 %}
+    <div class="row articles" style="margin-bottom: 30px;">
+        {% for produto in produtos %}
+            <div class="col-sm-6 col-md-2 text-center item" style="padding:30px;">
+                <div class="row img-produto">
+                    <a href="#"><img class="img-fluid" src="{{ produto.imagem.url }}"></a>
+                </div>
+                <div class="row name-produto">
+                    <h6 class="name">{{ produto.nome }}</h6>
+                </div>
+                <div class="row desc-produto">
+                    <p class="text-left description">{{ produto.descricao|truncatechars:200 }}</p>
+                </div>
+                <div class="row icon-produto">
+                    <a class="action" href="#">
+                        <i class="fa fa-search-plus"></i>
+                    </a>
+                </div>
             </div>
-          </div>
         {% endfor %}
-      </div>
     </div>
-  </div>
+{% else %}
+    <div class="alert alert-danger d-flex justify-content-center" role="alert"> 
+        <span>Não existem produtos registrados para essa categoria</span>
+    </div>
+{% endif %}
 {% endblock %}
-</body>
-
-</html>

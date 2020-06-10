@@ -22,7 +22,7 @@ class DepartamentoAdmin(admin.ModelAdmin):
 
 
 class CategoriaAdmin(admin.ModelAdmin):
-    list_display = ['nome', 'ativo']
+    list_display = ['departamento', 'nome', 'ativo']
     search_fields = ['nome']
     list_filter = ['ativo', 'criado_em']
 

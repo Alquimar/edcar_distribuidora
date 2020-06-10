@@ -1,25 +1,27 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from .models import Categoria, Item
+from .models import Departamento, Categoria, Item
 
 def getTodos(request):
-    categorias = Categoria.objects.filter(itens__isnull=False, ativo=True).distinct()
+    departamentos = Departamento.objects.filter(ativo=True)
+    produtos = Item.objects.filter(ativo=True)
     template_name = "core/home.html"
     context = {
-        'categorias': categorias
+        'departamentos': departamentos,
+        'produtos': produtos
     }
     return render(request, template_name, context)
 
 
 def getItensCategoria(request, categoria_id):
-    categorias = Categoria.objects.filter(itens__isnull=False, ativo=True).distinct()
-    itens = Item.objects.filter(categoria_id=categoria_id)
+    departamentos = Departamento.objects.filter(categorias__isnull=False, ativo=True).distinct()
+    produtos = Item.objects.filter(categoria_id=categoria_id)
     template_name = "core/itens_categoria.html"
-    categoria_id = categoria_id
+    categoria = Categoria.objects.get(pk=categoria_id)
     context = {
-        'categorias': categorias,
-        'itens': itens,
-        'categoria_id': categoria_id
+        'departamentos': departamentos,
+        'produtos': produtos,
+        'categoria': categoria
     }
     return render(request, template_name, context)

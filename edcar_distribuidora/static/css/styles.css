@@ -1,11 +1,27 @@
-.page-link.link-paginacao {
-  color: #decd18;
-  border: 0;
+.dropdown-item:focus, .dropdown-item:hover {
+  color: #F7D226;
+  background-color: #f8f9fa;
+  text-decoration: underline;
+  /*font-size: 14px;*/
 }
 
-.separador {
-  color: #decd18;
-  font-size: 14pt;
-  border-bottom: dashed 1px;
-  border-color: #decd18;
+.dropdown-item.active, .dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #007bff;
+  /*font-size: 14px;*/
+}
+
+.img-produto, .desc-produto, .icon-produto {
+  margin-bottom: 20px;
+}
+
+.name-produto {
+  height: 75px;
+  margin-bottom: 20px;
+}
+
+.desc-produto {
+  height: 270px;
+  margin-bottom: 20px;
 }

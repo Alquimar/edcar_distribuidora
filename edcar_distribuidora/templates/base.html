@@ -3,51 +3,108 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Renkon</title>
-  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-  <link rel="stylesheet" href="{% static 'fonts/ionicons.min.css' %}">
-  <link rel="stylesheet" href="{% static 'css/Footer-Dark.css' %}">
-  <link rel="stylesheet" href="{% static 'css/Login-Form-Dark.css' %}">
-  <link rel="stylesheet" href="{% static 'css/Navigation-Clean.css' %}">
-  <link rel="stylesheet" href="{% static 'css/Projects-Horizontal.css' %}">
-  <link rel="stylesheet" href="{% static 'css/pagination.css' %}">
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Ed Car Distribuidora</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Article-Clean.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Article-Dual-Column.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Article-List-1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Article-List.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
 <body>
-<div>
-  <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background-color: rgb(0,0,0);">
-    <div class="container"><a class="navbar-brand" href="index.html"><img src="{% static 'img/logo-provisorio.jpg' %}"
-                                                                          width="150px"></a>
-      <div id="navcol-1">
-        <ul class="nav navbar-nav ml-auto">
-          <li class="nav-item" role="presentation">
-            <a class="d-xl-flex justify-content-xl-end" href="/admin" style="color: #decd18;">Acesso Restrito</a>
-          </li>
-          {#          <li class="nav-item" role="presentation"><a class="nav-link" href="index.html" style="color: #decd18;">Desconetar</a>#}
-          </li>
-        </ul>
-      </div>
+    <div>
+        <div class="header-dark">
+            <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img src="assets/img/edcar-logo.png" style="width: 180px;">
+                    </a>
+                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navcol-1">
+                        <ul class="nav navbar-nav mx-auto">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="{% url 'core:home' %}">Home</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="qemsomos.html">Quem Somos</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="contato.html">Contato</a>
+                            </li>
+                        </ul>
+                        <span class="navbar-text">
+                            <a class="login" href="/admin">Acesso Restrito</a>
+                        </span>
+                    </div>
+                </div>
+            </nav>
+        </div>
     </div>
-  </nav>
-</div>
-{% block content %}
-{% endblock %}
-<div class="footer-dark" style="background-color: rgb(0,0,0);">
-  <footer>
-    <div class="container">
-      {#                <div class="row">#}
-      {#                    <div class="col item social"><a href="https://pt-br.facebook.com/renkon.palmas/" target="_blank"><i class="icon ion-social-facebook"></i></a><a href="https://www.instagram.com/renkon.palmas/" target="_blank"><i class="icon ion-social-instagram"></i></a></div>#}
-      {#                </div>#}
-      <p class="copyright">Renkon Â© 2019&nbsp;{% comment %}<a class="d-xl-flex justify-content-xl-end" href="/admin"
-                                                 style="color: #decd18;">Acesso Restrito</a></p>{% endcomment %}
+
+    <div class="container" style="max-width:1700px;">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-md-12">
+                <nav class="navbar navbar-light navbar-expand-md">
+                    <div class="container-fluid"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navcol-2">
+                            <ul class="nav navbar-nav mx-auto">
+                            {% if departamentos.count > 0 %}
+                                {% for departamento in departamentos %}
+                                    <li class="nav-item dropdown">
+                                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">{{ departamento }} </a>
+                                        <div class="dropdown-menu" role="menu">
+                                            {% for categoria in departamento.categorias.all %}
+                                                <a class="dropdown-item" role="presentation" href="{% url 'core:itens_categoria' categoria.pk %}">{{ categoria }}</a>
+                                            {% endfor %}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                <div class="alert alert-danger d-flex justify-content-center" role="alert">
+                                    <span>Não existem produtos registrados</span>
+                                </div>
+                            {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        {% block content %}
+        {% endblock %}
     </div>
-  </footer>
-</div>
-<script src="{% static 'js/jquery.min.js' %}"></script>
-<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <div class="footer-basic">
+        <footer>
+            <div class="social">
+                <a href="https://www.instagram.com/edcar_distribuidora/?hl=pt-br" target="_blank">
+                    <i class="icon ion-social-instagram"></i>
+                </a>
+                <a href="#" target="_blank"><i class="icon ion-social-facebook"></i></a>
+            </div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="index.html">Home</a></li>
+                <li class="list-inline-item"><a href="qemsomos.html">Quem Somos</a></li>
+                <li class="list-inline-item"><a href="contato.html">Contato</a></li>
+            </ul>
+            <p class="copyright">Ed Car © 2020</p>
+        </footer>
+    </div>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 
 </html>

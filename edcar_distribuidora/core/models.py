@@ -42,6 +42,7 @@ class Departamento(AbstractModel):
 
 
 class Categoria(AbstractModel):
+    departamento = models.ForeignKey(Departamento, verbose_name='departamento', related_name='categorias', on_delete=models.PROTECT)
 
     def __str__(self):
         return '{}'.format(self.nome)
@@ -52,7 +53,6 @@ class Categoria(AbstractModel):
 
 
 class Item(AbstractModel):
-    departamento = models.ForeignKey(Departamento, verbose_name='departamento', related_name='itens', on_delete=models.PROTECT)
     categoria = models.ForeignKey(Categoria, verbose_name='categoria', related_name='itens', on_delete=models.PROTECT)
     catalogo = models.ForeignKey(Catalogo, verbose_name='catalogo', related_name='itens', on_delete=models.PROTECT)
     descricao = models.TextField('Descrição')
@@ -62,7 +62,7 @@ class Item(AbstractModel):
                                null=True, blank=True)
 
     def __str__(self):
-        return '{} - {} - {} - {}'.format(self.departamento, self.catalogo, self.categoria, self.nome)
+        return '{} - {} - {} - {}'.format(self.catalogo, self.categoria.departamento, self.categoria, self.nome)
 
     class Meta:
         verbose_name = "Item"
