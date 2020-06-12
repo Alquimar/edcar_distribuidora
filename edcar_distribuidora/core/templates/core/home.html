@@ -4,7 +4,11 @@
 {% block content %}
 {% if produtos.count > 0 %}
     <div class="text-center">
-        <h3>TODOS</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Home</li>
+            </ol>
+        </nav>
     </div>
 
     <div class="row articles" style="margin-bottom: 30px;">

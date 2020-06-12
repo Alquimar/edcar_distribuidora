@@ -3,7 +3,15 @@
 
 {% block content %}
 <div class="text-center">
-    <h3>{{ categoria.nome }}</h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'core:home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ categoria.departamento.nome }}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ categoria.nome }}</li>
+            {% comment %} <li class="breadcrumb-item"><a href="#">{{ categoria.departamento.nome }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ categoria.nome }}</li> {% endcomment %}
+        </ol>
+    </nav>
 </div>
 {% if produtos.count > 0 %}
     <div class="row articles" style="margin-bottom: 30px;">
