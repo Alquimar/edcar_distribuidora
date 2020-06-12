@@ -5,11 +5,9 @@
 <div class="text-center">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'core:home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{% url 'core:home' %}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ categoria.departamento.nome }}</li>
             <li class="breadcrumb-item active" aria-current="page">{{ categoria.nome }}</li>
-            {% comment %} <li class="breadcrumb-item"><a href="#">{{ categoria.departamento.nome }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ categoria.nome }}</li> {% endcomment %}
         </ol>
     </nav>
 </div>

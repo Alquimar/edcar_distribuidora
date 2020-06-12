@@ -25,3 +25,11 @@
   height: 270px;
   margin-bottom: 20px;
 }
+
+.breadcrumb-link {
+  color: black;
+}
+
+.breadcrumb-link:hover {
+  color: #F7D226;
+}
