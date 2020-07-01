@@ -55,6 +55,7 @@ class Categoria(AbstractModel):
 class Item(AbstractModel):
     categoria = models.ForeignKey(Categoria, verbose_name='categoria', related_name='itens', on_delete=models.PROTECT)
     catalogo = models.ForeignKey(Catalogo, verbose_name='catalogo', related_name='itens', on_delete=models.PROTECT)
+    codigo = models.BigIntegerField('Código', unique=True)
     descricao = models.TextField('Descrição')
     valor = models.DecimalField('Valor (R$)', max_digits=10, decimal_places=2)
     mostrar_valor = models.BooleanField('Mostrar valor no catálogo?', default=False)
