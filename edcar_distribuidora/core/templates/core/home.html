@@ -2,6 +2,35 @@
 {% load static %}
 
 {% block content %}
+<div class="row" style="margin-bottom: 20px;">
+    <div class="col-md-12">
+        <nav class="navbar navbar-light navbar-expand-md">
+            <div class="container-fluid"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-2">
+                    <ul class="nav navbar-nav mx-auto">
+                    {% if departamentos.count > 0 %}
+                        {% for departamento in departamentos %}
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">{{ departamento }} </a>
+                                <div class="dropdown-menu" role="menu">
+                                    {% for categoria in departamento.categorias.all %}
+                                        <a class="dropdown-item" role="presentation" href="{% url 'core:itens_categoria' categoria.pk %}">{{ categoria }}</a>
+                                    {% endfor %}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <div class="alert alert-danger d-flex justify-content-center" role="alert">
+                            <span>Não existem produtos registrados</span>
+                        </div>
+                    {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
 {% if produtos.count > 0 %}
     <div class="text-center">
         <nav aria-label="breadcrumb">

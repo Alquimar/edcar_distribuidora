@@ -38,10 +38,10 @@
                                 <a class="nav-link" href="{% url 'core:home' %}">Home</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" href="qemsomos.html">Quem Somos</a>
+                                <a class="nav-link" href="{% url 'core:quem_somos' %}">Quem Somos</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" href="contato.html">Contato</a>
+                                <a class="nav-link" href="{% url 'core:contato' %}">Contato</a>
                             </li>
                         </ul>
                         <span class="navbar-text">
@@ -54,35 +54,6 @@
     </div>
 
     <div class="container" style="max-width:1700px;">
-        <div class="row" style="margin-bottom: 20px;">
-            <div class="col-md-12">
-                <nav class="navbar navbar-light navbar-expand-md">
-                    <div class="container-fluid"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                        <div class="collapse navbar-collapse" id="navcol-2">
-                            <ul class="nav navbar-nav mx-auto">
-                            {% if departamentos.count > 0 %}
-                                {% for departamento in departamentos %}
-                                    <li class="nav-item dropdown">
-                                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">{{ departamento }} </a>
-                                        <div class="dropdown-menu" role="menu">
-                                            {% for categoria in departamento.categorias.all %}
-                                                <a class="dropdown-item" role="presentation" href="{% url 'core:itens_categoria' categoria.pk %}">{{ categoria }}</a>
-                                            {% endfor %}
-                                        </div>
-                                    </li>
-                                {% endfor %}
-                            {% else %}
-                                <div class="alert alert-danger d-flex justify-content-center" role="alert">
-                                    <span>Não existem produtos registrados</span>
-                                </div>
-                            {% endif %}
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-
         {% block content %}
         {% endblock %}
     </div>
@@ -96,9 +67,9 @@
                 <a href="#" target="_blank"><i class="icon ion-social-facebook"></i></a>
             </div>
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="index.html">Home</a></li>
-                <li class="list-inline-item"><a href="qemsomos.html">Quem Somos</a></li>
-                <li class="list-inline-item"><a href="contato.html">Contato</a></li>
+                <li class="list-inline-item"><a href="{% url 'core:home' %}">Home</a></li>
+                <li class="list-inline-item"><a href="{% url 'core:quem_somos' %}">Quem Somos</a></li>
+                <li class="list-inline-item"><a href="{% url 'core:contato' %}">Contato</a></li>
             </ul>
             <p class="copyright">Ed Car © 2020</p>
         </footer>
