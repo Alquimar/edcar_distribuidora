@@ -1,10 +1,10 @@
 .header-dark {
-  padding-bottom: 80px;
-  height: 0px;
+  /*padding-bottom: 80px;*/
+  /*height: 0px;*/
 }
 
 .header-dark {
-  padding-bottom: 120px;
+  /*padding-bottom: 120px;*/
 }
 
 .header-dark .navbar {
@@ -15,9 +15,17 @@
   border: none;
 }
 
+.menu {
+  background: #de373a;
+  color: #FEFEFE;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
 .header-dark .navbar {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
+  /*padding-top: .75rem;*/
+  /*padding-bottom: .75rem;*/
 }
 
 .header-dark .navbar .navbar-brand {

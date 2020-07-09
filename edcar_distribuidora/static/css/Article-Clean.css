@@ -82,8 +82,12 @@
   max-width: 100%;
 }
 
-.navbar-light .navbar-nav .nav-link {
-  color: #221C1B;
+.navbar-light .navbar-nav .nav-link .submenu {
+  color: #000000;
+}
+
+.navbar-light .navbar-nav .submenu .nav-link:hover {
+  color: #F7D226;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
@@ -106,5 +110,25 @@
 .fa.fa-search-plus {
   color: #F7D226;
   font-size: 28px;
+}
+
+.navbar-light .navbar-nav .nav-link .submenu {
+  color: white;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #d3d3d3;
+}
+
+.navbar-light .navbar-nav .nav-link .submenu {
+  color: rgb(0,0,0);
+}
+
+.navbar-light .navbar-nav .nav-link .submenu {
+  color: black;
+}
+
+.navbar-light .navbar-nav .nav-link .submenu {
+  color: black;
 }
 
