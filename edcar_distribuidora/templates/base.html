@@ -22,14 +22,30 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md menu">
-        <div class="container-fluid"><a class="navbar-brand" href="#"><img src="{% static 'img/edcar-logo.png' %}" style="width: 180px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-3"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse" id="navcol-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'core:home' %}">
+                <img src="{% static 'img/edcar-logo.png' %}" style="width: 180px;">
+            </a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-3">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-3">
                 <ul class="nav navbar-nav mx-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link submenu" href="{% url 'core:home' %}" style="font-weight: bold;">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'core:quem_somos' %}" style="font-weight: bold;">Quem Somos</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'core:contato' %}" style="font-weight: bold;">Contato</a></li>
-                </ul><span class="navbar-text"><a class="login" href="/admin" style="color: rgb(255,255,255);font-weight: normal;">Acesso Restrito</a></span></div>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link submenu" href="{% url 'core:home' %}" style="font-weight: bold;">Home</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="{% url 'core:quem_somos' %}" style="font-weight: bold;">Quem Somos</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="{% url 'core:contato' %}" style="font-weight: bold;">Contato</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <a class="login" href="/admin" style="color: rgb(255,255,255);font-weight: normal;">Acesso Restrito</a>
+                </span>
+            </div>
         </div>
     </nav>
 
@@ -42,9 +58,9 @@
         <footer>
             <div class="social"><a href="https://www.instagram.com/edcar_distribuidora/?hl=pt-br" target="_blank"><i class="icon ion-social-instagram"></i></a><a href="#" target="_blank"><i class="icon ion-social-facebook"></i></a></div>
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="index.html">Home</a></li>
-                <li class="list-inline-item"><a href="qemsomos.html">Quem Somos</a></li>
-                <li class="list-inline-item"><a href="contato.html">Contato</a></li>
+                <li class="list-inline-item"><a href="{% url 'core:home' %}">Home</a></li>
+                <li class="list-inline-item"><a href="{% url 'core:quem_somos' %}">Quem Somos</a></li>
+                <li class="list-inline-item"><a href="{% url 'core:contato' %}">Contato</a></li>
             </ul>
             <p class="copyright">Ed Car © 2020</p>
         </footer>
