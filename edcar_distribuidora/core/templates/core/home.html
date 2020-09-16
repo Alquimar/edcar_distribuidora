@@ -43,9 +43,11 @@
     <div class="row articles" style="margin-bottom: 30px;">
         {% for produto in produtos %}
             <div class="col-sm-6 col-md-2 text-center item" style="padding:30px;">
+                {% if produto.imagem %}
                 <div class="row img-produto">
                     <a href="#"><img class="img-fluid" src="{{ produto.imagem.url }}"></a>
                 </div>
+                {% endif %}
                 <div class="row name-produto">
                     <h6 class="name">{{ produto.nome }}</h6>
                 </div>
